@@ -1,0 +1,24 @@
+service: incident-reporting
+package:
+  individually: true
+provider:
+  name: aws
+  runtime: nodejs12.x
+  stage: ${opt:stage,'staging'}
+  region: eu-west-1
+plugins:
+  - serverless-offline
+functions:
+  index:
+    handler: index.handler
+    environment: ${self:custom.env}
+    memorySize: 256
+    timeout: 30
+    events:
+      - http:
+          path: /incident
+          method: GET
+          cors: true
+resources:
+  # API Gateway Errors (for CORS)
+  - ${file(resources/api-gateway-errors.yml)}

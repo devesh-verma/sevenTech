@@ -1,0 +1,29 @@
+{
+  "name": "lambda_test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon --exec sls offline start -e js,yml"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/devesh-verma/sevenTech.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/devesh-verma/sevenTech/issues"
+  },
+  "homepage": "https://github.com/devesh-verma/sevenTech#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.6"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "request": "^2.88.2",
+    "serverless-http": "^2.6.0",
+    "serverless-offline": "^6.8.0"
+  }
+}
