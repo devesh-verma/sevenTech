@@ -8,6 +8,8 @@ provider:
   region: eu-west-1
 plugins:
   - serverless-offline
+custom:
+  env: ${ssm.eu-west-1:/aws/reference/secretsmanager/${self:provider.stage}~true, file(./.env.json) }
 functions:
   index:
     handler: index.handler
