@@ -1,0 +1,29 @@
+service: incident-report
+frameworkVersion: '2'
+provider:
+  name: aws
+  runtime: nodejs12.x
+  stage: staging
+  region: us-east-1
+  apiGateway:
+    restApiId: r00kqjtpxa
+    restApiRootResourceId: 5y71ykqu22
+    restApiResources: 
+      '/incident': ahjq0t
+plugins:
+  - serverless-offline
+functions:
+  getIncident:
+    handler: handler.getIncident
+    events:
+      - http:
+          path: /incident/{proxy+}
+          method: get
+          cors: true
+  postIncident:
+    handler: handler.postIncident
+    events:
+      - http:
+          path: /incident/{proxy+}
+          method: post
+          cors: true
