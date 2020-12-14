@@ -8,8 +8,6 @@ provider:
   apiGateway:
     restApiId: r00kqjtpxa
     restApiRootResourceId: 5y71ykqu22
-    restApiResources: 
-      '/incident': ahjq0t
 plugins:
   - serverless-offline
 functions:
