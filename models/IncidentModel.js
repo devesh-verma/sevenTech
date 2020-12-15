@@ -3,6 +3,7 @@ const validator = require('validator');
 const { Schema } = mongoose;
 
 const postIncidentSchema = new Schema({
+  _id: false,
   id: {
     type: Number,
     required: true,
@@ -36,21 +37,74 @@ const postIncidentSchema = new Schema({
     type: String,
     required: true,
     validate(value) {
-      if (value.length < 0) {
+      if (!value) {
         throw new Error('title is required');
       }
     }
   },
   category: {
     type: Number,
-    required: true
+    required: true,
+    validate(value) {
+      if (!value) {
+        throw new Error('category is required');
+      }
+    }
   },
+  people: [{
+    _id: false,
+    name: {
+      type: String,
+      required: true,
+      validate(value) {
+        if (!value) {
+          throw new Error('name is required');
+        }
+      }
+    },
+    type: {
+      type: String,
+      required: true,
+      validate(value) {
+        if (!value) {
+          throw new Error('type is required');
+        }
+      }
+    }
+  }],
   comments: {
     type: String,
     required: true,
     validate(value) {
-      if (value.length < 0) {
+      if (!value) {
         throw new Error('comments is required');
+      }
+    }
+  },
+  incidentDate: {
+    type: Date,
+    required: true,
+    validate(value) {
+      if (!value) {
+        throw new Error('incidentDate is required');
+      }
+    }
+  },
+  createDate: {
+    type: Date,
+    required: true,
+    validate(value) {
+      if (!value) {
+        throw new Error('createDate is required');
+      }
+    }
+  },
+  modifyDate: {
+    type: Date,
+    required: true,
+    validate(value) {
+      if (!value) {
+        throw new Error('modifyDate is required');
       }
     }
   }
